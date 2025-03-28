@@ -1,14 +1,14 @@
 import { initializeApp, getApps, getApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
 
-// Firebaseの設定
+// 環境変数からFirebaseの設定を読み込み
 const firebaseConfig = {
-  apiKey: "AIzaSyDUQSelQOAkrlZsiwpgN9zTC52MUbmHNzA",
-  authDomain: "ohmyfragrance-da34e.firebaseapp.com",
-  projectId: "ohmyfragrance-da34e",
-  storageBucket: "ohmyfragrance-da34e.appspot.com",
-  messagingSenderId: "276821300191",
-  appId: "1:276821300191:web:YOUR_APP_ID", // 実際のアプリIDに置き換える必要があります
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 }
 
 // Firebaseの初期化（既に初期化されている場合は既存のインスタンスを使用）
@@ -16,4 +16,3 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 const auth = getAuth(app)
 
 export { app, auth }
-
